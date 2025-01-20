@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounces to Grams Converter</title>
+</head>
+<body>
+    <h1>Ounces to Grams Converter</h1>
+    <p>
+        <label for="x-ounces">X ounces is equivalent to:</label>
+        <input type="number" id="x-ounces" placeholder="X ounces" required>
+        <label for="y-grams">Y grams:</label>
+        <input type="number" id="y-grams" placeholder="Y grams" required>
+    </p>
+
+    <p>
+        <label for="z-ounces">How much is Z ounces in grams?</label>
+        <input type="number" id="z-ounces" placeholder="Z ounces" required>
+    </p>
+
+    <button id="compute-btn">Compute</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('compute-btn').addEventListener('click', function() {
+            // Get input values
+            const xOunces = parseFloat(document.getElementById('x-ounces').value);
+            const yGrams = parseFloat(document.getElementById('y-grams').value);
+            const zOunces = parseFloat(document.getElementById('z-ounces').value);
+
+            // Validate inputs
+            if (isNaN(xOunces) || isNaN(yGrams) || isNaN(zOunces) || xOunces <= 0) {
+                document.getElementById('result').textContent = 'Please enter valid numbers.';
+                return;
+            }
+
+            // Calculate the conversion factor
+            const conversionFactor = yGrams / xOunces;
+
+            // Calculate the result for Z ounces
+            const resultInGrams = zOunces * conversionFactor;
+
+            // Display the result
+            document.getElementById('result').textContent = `${zOunces} ounces is equivalent to ${resultInGrams.toFixed(2)} grams.`;
+        });
+    </script>
+</body>
+</html>
